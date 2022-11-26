@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 10:43:50 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/25 11:35:56 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/26 10:57:35 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	print_list(t_list *ls)
 	ft_printf("---\n");
 }
 
-int	*acatoip(int argc, char **stacka)
+long	*acatoip(int argc, char **stacka)
 {
 	size_t	i;
-	int		*res;
+	long	*res;
 
 	i = 0;
 	res = ft_calloc(argc - 1, sizeof(int));

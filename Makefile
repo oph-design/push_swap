@@ -6,7 +6,7 @@
 #    By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 13:35:23 by oheinzel          #+#    #+#              #
-#    Updated: 2022/11/25 14:34:51 by oheinzel         ###   ########.fr        #
+#    Updated: 2022/11/26 11:18:17 by oheinzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ RM			= rm -f
 
 #Sources
 
-SRC_FILES	=	list_utils operations main
+SRC_FILES	=	list_utils operations main input_check
 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
