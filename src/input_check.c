@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:19:05 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/27 18:39:36 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/27 18:50:01 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,10 @@ int	ft_condom(int argc, char *argv[])
 		return (ft_putendl_fd("\033[0;31mERROR: WRONG FORMAT", 2), 1);
 	if (check_nbr(argc, argv))
 		return (ft_putendl_fd("\033[0;31mERROR: NON DIGIT", 2), 1);
-	vals = acatoip(argc, argv);
+	vals = strltoval(argc, argv);
 	if (check_int(argc, vals))
-		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
+		return (free(vals), ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
 	if (check_dups(argc, vals))
-		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
-	return (0);
+		return (free(vals), ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
+	return (free(vals), 0);
 }

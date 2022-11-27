@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/27 17:00:04 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/27 18:50:11 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 //list-utils
 int		conv_content(t_list *node);
 void	print_list(t_list *ls);
-long	*acatoip(int argc, char **stacka);
+long	*strltoval(int argc, char **stacka);
 t_list	*convert_input(int argc, char **stacka);
 
 //opreations
