@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/27 18:09:11 by oheinzel         ###   ########.fr       */
+/*   Created: 2022/10/12 10:55:45 by oheinzel          #+#    #+#             */
+/*   Updated: 2022/10/20 11:03:43 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_list	*a;
-	t_list	*b;
-	int		test[5] = {78, 37, 100, -6, 8999};
-	int		i;
-
-	if (ft_condom(argc, argv))
-		return (2);
-	i = 0;
-	b = ft_lstnew(&test[i]);
-	while (i++ < 4)
-		ft_lstadd_back(&b, ft_lstnew(&test[i]));
-	a = convert_input(argc, argv);
-	print_list(a);
-	print_list(b);
-	operate(&a, &b, 'r', rrotate);
-	print_list(a);
-	print_list(b);
+	if (!s)
+		return ;
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

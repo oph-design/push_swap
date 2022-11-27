@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:19:05 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/26 11:28:56 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/27 18:39:36 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@ static int	check_nbr(int argc, char *argv[])
 
 	i = 0;
 	j = 0;
-	while (i++ < argc)
+	while (i++ < (argc - 1))
 	{
 		j = 0;
 		if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-')
 			return (1);
-		while (argv[i][j++])
+		while (argv[i][j])
 		{
 			if (!ft_isdigit(argv[i][j]))
 				return (1);
+			j++;
 		}
 	}
 	return (0);
@@ -35,7 +36,7 @@ static int	check_nbr(int argc, char *argv[])
 
 static int	check_spcs(char *arg)
 {
-	while (arg)
+	while (*arg)
 	{
 		if (*arg == 32)
 			return (1);
@@ -66,12 +67,14 @@ static int	check_dups(int argc, long *vals)
 	argc--;
 	while (i < argc)
 	{
-		j = i;
+		j = i + 1;
 		while (j < argc)
 		{
 			if (vals[i] == vals [i + j])
 				return (1);
+			j++;
 		}
+		i++;
 	}
 	return (0);
 }
@@ -81,15 +84,15 @@ int	ft_condom(int argc, char *argv[])
 	long	*vals;
 
 	if (argc < 2)
-		return (ft_putstr_fd("ERROR: TOO FEW ARGS\n", 2), 1);
+		return (1);
 	if (check_spcs(argv[1]) && argv[2] != NULL)
-		return (ft_putstr_fd("ERROR: FORMAT NOT SUPPORTED\n", 2), 1);
+		return (ft_putendl_fd("\033[0;31mERROR: WRONG FORMAT", 2), 1);
 	if (check_nbr(argc, argv))
-		return (ft_putstr_fd("ERROR: NON DIGIT DETECTED\n", 2), 1);
+		return (ft_putendl_fd("\033[0;31mERROR: NON DIGIT", 2), 1);
 	vals = acatoip(argc, argv);
 	if (check_int(argc, vals))
-		return (ft_putstr_fd("ERROR: NON INTEGER DETECTED\n", 2), 1);
+		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
 	if (check_dups(argc, vals))
-		return (ft_putstr_fd("ERROR: DUPLICATE DETECTED\n", 2), 1);
+		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
 	return (0);
 }

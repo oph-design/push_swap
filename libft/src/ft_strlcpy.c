@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/27 18:09:11 by oheinzel         ###   ########.fr       */
+/*   Created: 2022/10/11 16:42:35 by oheinzel          #+#    #+#             */
+/*   Updated: 2022/10/19 11:21:58 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	t_list	*a;
-	t_list	*b;
-	int		test[5] = {78, 37, 100, -6, 8999};
-	int		i;
+	size_t	i;
+	char	*s;
 
-	if (ft_condom(argc, argv))
-		return (2);
+	s = (char *)src;
 	i = 0;
-	b = ft_lstnew(&test[i]);
-	while (i++ < 4)
-		ft_lstadd_back(&b, ft_lstnew(&test[i]));
-	a = convert_input(argc, argv);
-	print_list(a);
-	print_list(b);
-	operate(&a, &b, 'r', rrotate);
-	print_list(a);
-	print_list(b);
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	while (s[i] && i < dstsize - 1)
+	{
+		dst[i] = s[i];
+		i++;
+	}
+	dst[i] = 0;
+	return (ft_strlen(src));
 }

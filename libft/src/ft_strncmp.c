@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/27 18:09:11 by oheinzel         ###   ########.fr       */
+/*   Created: 2022/10/11 16:42:42 by oheinzel          #+#    #+#             */
+/*   Updated: 2022/10/19 13:27:05 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_list	*a;
-	t_list	*b;
-	int		test[5] = {78, 37, 100, -6, 8999};
-	int		i;
+	size_t				i;
+	const unsigned char	*a;
+	const unsigned char	*b;
 
-	if (ft_condom(argc, argv))
-		return (2);
 	i = 0;
-	b = ft_lstnew(&test[i]);
-	while (i++ < 4)
-		ft_lstadd_back(&b, ft_lstnew(&test[i]));
-	a = convert_input(argc, argv);
-	print_list(a);
-	print_list(b);
-	operate(&a, &b, 'r', rrotate);
-	print_list(a);
-	print_list(b);
+	a = (const unsigned char *) s1;
+	b = (const unsigned char *) s2;
+	while (a[i] && b[i] && i < n)
+	{
+		if (a[i] != b[i])
+			return (a[i] - b[i]);
+		++i;
+	}
+	if (i != n)
+		return (a[i] - b[i]);
+	return (0);
 }

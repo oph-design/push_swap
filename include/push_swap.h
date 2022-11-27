@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/26 11:19:35 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:00:04 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 //includes
 # include "libft.h"
-#include <limits.h>
+# include <limits.h>
 
 //list-utils
 int		conv_content(t_list *node);
@@ -31,6 +31,6 @@ void	rrotate(t_list **stack);
 int		operate(t_list **a, t_list **b, char id, void (*op)(t_list **stack));
 
 //protection
-int	ft_condom(int argc, char *argv[]);
+int		ft_condom(int argc, char *argv[]);
 
 #endif

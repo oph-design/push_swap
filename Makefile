@@ -6,7 +6,7 @@
 #    By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 13:35:23 by oheinzel          #+#    #+#              #
-#    Updated: 2022/11/26 11:18:17 by oheinzel         ###   ########.fr        #
+#    Updated: 2022/11/27 16:59:32 by oheinzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT		= libft
 SRC_DIR		= src/
 OBJ_DIR		= obj/
 CC			= gcc
-CFLAGS		= -I
+CFLAGS		= -g -I
 RM			= rm -f
 
 #Sources

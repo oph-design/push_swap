@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/27 18:09:11 by oheinzel         ###   ########.fr       */
+/*   Created: 2022/10/12 10:54:33 by oheinzel          #+#    #+#             */
+/*   Updated: 2022/10/19 11:16:21 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_list	*a;
-	t_list	*b;
-	int		test[5] = {78, 37, 100, -6, 8999};
-	int		i;
-
-	if (ft_condom(argc, argv))
-		return (2);
-	i = 0;
-	b = ft_lstnew(&test[i]);
-	while (i++ < 4)
-		ft_lstadd_back(&b, ft_lstnew(&test[i]));
-	a = convert_input(argc, argv);
-	print_list(a);
-	print_list(b);
-	operate(&a, &b, 'r', rrotate);
-	print_list(a);
-	print_list(b);
+	if (n == -2147483648)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putchar_fd('2', fd);
+		n = 147483648;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		n = n % 10;
+	}
+	if (n < 10)
+		ft_putchar_fd(n + 48, fd);
 }
