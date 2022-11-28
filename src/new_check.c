@@ -31,23 +31,10 @@ static int	check_nbr(t_list **stack)
 				return (1);
 		}
 		val = ft_atoi(str);
+		if (val < INT_MIN || val > INT_MAX)
+			return (1);
 		(*stack)->content = &val;
 		(*stack) = (*stack)->next;
-	}
-	return (0);
-}
-
-static int	check_int(t_list *stack)
-{
-	long	*val;
-
-	val = NULL;
-	while (stack != NULL)
-	{
-		val = (long *)(stack->content);
-		if (*val < INT_MIN || *val > INT_MAX)
-			return (1);
-		stack = stack->next;
 	}
 	return (0);
 }
@@ -78,8 +65,6 @@ static int	check_dups(t_list *stack)
 int	ft_condom(t_list **stack)
 {
 	if (check_nbr(stack))
-		return (ft_putendl_fd("\033[0;31mERROR: NON DIGIT", 2), 1);
-	if (check_int(*stack))
 		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
 	if (check_dups(*stack))
 		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
