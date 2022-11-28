@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 10:43:50 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/27 18:49:53 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:33:40 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_list(t_list *ls)
 	ft_printf("---\n");
 	while (ls != NULL)
 	{
-		ft_printf("%d\n", conv_content(ls));
+		ft_printf("%d\n", *((long *)ls->content));
 		ls = ls->next;
 	}
 	ft_printf("---\n");

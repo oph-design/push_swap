@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/27 18:50:11 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:05:07 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@
 # include <limits.h>
 
 //list-utils
-int		conv_content(t_list *node);
+t_list	*convert(int argc, char **argv);
 void	print_list(t_list *ls);
-long	*strltoval(int argc, char **stacka);
-t_list	*convert_input(int argc, char **stacka);
 
 //opreations
 void	swap(t_list **st);
@@ -31,6 +29,6 @@ void	rrotate(t_list **stack);
 int		operate(t_list **a, t_list **b, char id, void (*op)(t_list **stack));
 
 //protection
-int		ft_condom(int argc, char *argv[]);
+int		ft_condom(t_list **stack);
 
 #endif
