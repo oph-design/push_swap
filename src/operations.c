@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 10:50:38 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/25 14:32:02 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:01:05 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	swap(t_list **stack)
 {
 	t_list	*tmp;
 
+	if(!stack || !(*stack) || ft_lstlast(*stack) == (*stack))
+		return ;
 	tmp = *stack;
 	*stack = (*stack)->next;
 	tmp->next = (*stack)->next;
@@ -27,7 +29,7 @@ void	push(t_list **push, t_list **pushto, char id)
 {
 	t_list	*tmp;
 
-	if (!*push)
+	if (!push || !*push)
 		return ;
 	tmp = *push;
 	*push = (*push)->next;
@@ -39,6 +41,8 @@ void	rotate(t_list **stack)
 {
 	t_list	*tmp;
 
+	if(!stack || !(*stack) || ft_lstlast(*stack) == (*stack))
+		return ;
 	ft_lstadd_back(stack, ft_lstnew((*stack)->content));
 	tmp = *stack;
 	*stack = (*stack)->next;
@@ -50,6 +54,8 @@ void	rrotate(t_list **stack)
 {
 	t_list	*tmp;
 
+	if(!stack || !(*stack) || ft_lstlast(*stack) == (*stack))
+		return ;
 	tmp = *stack;
 	ft_lstadd_front(stack, ft_lstnew(ft_lstlast(*stack)->content));
 	while ((tmp)->next->next != NULL)

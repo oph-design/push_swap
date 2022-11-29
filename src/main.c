@@ -6,18 +6,18 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/29 07:55:27 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:56:17 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	print_list(t_list *ls)
+void	print_list(t_list *ls)
 {
 	ft_printf("---\n");
 	while (ls != NULL)
 	{
-		ft_printf("%d\n", *((long *)ls->content));
+		ft_printf("%d\n", (int *)ls->content);
 		ls = ls->next;
 	}
 	ft_printf("---\n");
@@ -35,13 +35,14 @@ int	main(int argc, char *argv[])
 	a = convert(argc, argv);
 	if (check_nbr(&a))
 		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
+	print_list(a);
 	if (check_dups(a))
 		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
-	i = 0;
-	b = ft_lstnew(&test[i]);
-	while (i++ < 4)
-		ft_lstadd_back(&b, ft_lstnew(&test[i]));
 	print_list(a);
+	i = 0;
+	b = ft_lstnew((void *)test[i]);
+	while (i++ < 4)
+		ft_lstadd_back(&b, ft_lstnew((void *)test[i]));
 	print_list(b);
 	operate(&a, &b, 'r', rrotate);
 	print_list(a);

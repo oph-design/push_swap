@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/29 08:21:34 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:51:23 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@ static void	split_str(char *str, t_list **res)
 	char	**split;
 
 	split = ft_split(str, ' ');
-	while (split != NULL)
+	while (*split != NULL)
 	{
 		ft_lstadd_back(res, ft_lstnew(*split));
-		free(*split);
 		split++;
 	}
-	free(*split);
-	free(split);
+	//free(*split);
+	//free(split);
 }
 
 t_list	*convert(int argc, char **argv)
@@ -60,12 +59,14 @@ int	check_nbr(t_list **stack)
 	size_t	i;
 	char	*str;
 	long	val;
+	t_list	*tmp;
 
+	tmp = (*stack);
 	i = 0;
-	while (*stack != NULL)
+	while (tmp != NULL)
 	{
+		str = (char *)(tmp->content);
 		i = 0;
-		str = (char *)((*stack)->content);
 		if (!ft_isdigit(str[i]) && str[i++] != '-')
 			return (1);
 		while (str[i])
@@ -76,8 +77,8 @@ int	check_nbr(t_list **stack)
 		val = ft_atoi(str);
 		if (val < INT_MIN || val > INT_MAX)
 			return (1);
-		(*stack)->content = &val;
-		(*stack) = (*stack)->next;
+		tmp->content = (void *)val;
+		tmp = tmp->next;
 	}
 	return (0);
 }
@@ -85,22 +86,23 @@ int	check_nbr(t_list **stack)
 int	check_dups(t_list *stack)
 {
 	t_list	*tmp;
-	long	*val;
+	int		*val;
 
 	tmp = NULL;
-	val = NULL;
+	val = malloc(2 * sizeof(int));
 	while (stack != NULL)
 	{
 		tmp = stack->next;
-		val[0] = *((long *)(stack->content));
+		val[0] = (int)stack->content;
 		while (tmp != NULL)
 		{
-			val[1] = *((long *)(tmp->content));
+			val[1] = (int)(tmp->content);
 			if (val[0] == val[1])
 				return (1);
 			tmp = tmp->next;
 		}
 		stack = stack->next;
 	}
+	free(val);
 	return (0);
 }
