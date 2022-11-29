@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/29 13:58:17 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:07:47 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ int		check_dups(t_list *stack);
 int		check_nbr(t_list **stack);
 void	print_list(t_list *ls);
 
-//opreations
-void	swap(t_list **st);
+//operations
+void	swap(t_list **st, char id);
 void	push(t_list **push, t_list **pushto, char id);
-void	rotate(t_list **stack);
-void	rrotate(t_list **stack);
-int		operate(t_list **a, t_list **b, char id, void (*op)(t_list **stack));
+void	rotate(t_list **stack, char id);
+void	rrotate(t_list **stack, char id);
+void	multi_rrotate(t_list **a, t_list **b);
+void	multi_rotate(t_list **a, t_list **b);
+void	multi_swap(t_list **a, t_list **b);
 
 #endif
