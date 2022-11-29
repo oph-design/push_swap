@@ -6,13 +6,13 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/29 18:55:57 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 19:20:12 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_spcs(char *arg)
+int	check_spcs(char *arg)
 {
 	while (*arg)
 	{
@@ -30,8 +30,7 @@ static void	split_str(char *str, t_list **res)
 
 	i = 0;
 	split = ft_split(str, ' ');
-	if (*res == NULL)
-		*res = ft_lstnew(split[i++]);
+	*res = ft_lstnew(split[i++]);
 	while (split[i] != NULL)
 		ft_lstadd_back(res, ft_lstnew(split[i++]));
 	free(split);
@@ -45,20 +44,18 @@ t_list	*convert(int argc, char **argv)
 	i = 1;
 	res = NULL;
 	if (check_spcs(argv[i]))
-		split_str(argv[i], &res);
-	else
-		res = ft_lstnew(argv[i]);
+		return (split_str(argv[i], &res), res);
 	while (i++ < (argc - 1))
 	{
 		if (check_spcs(argv[i]))
-			split_str(argv[i], &res);
+			return (NULL);
 		else
 			ft_lstadd_back(&res, ft_lstnew(argv[i]));
 	}
 	return (res);
 }
 
-int	check_nbr(t_list **stack)
+int	check_nbr(t_list **stack, int split)
 {
 	size_t	i;
 	char	*str;
@@ -79,10 +76,9 @@ int	check_nbr(t_list **stack)
 				return (1);
 		}
 		val = ft_atoi(str);
-		if (val < INT_MIN || val > INT_MAX)
-			return (1);
+		if (split)
+			free(str);
 		tmp->content = (void *)val;
-		free(str);
 		tmp = tmp->next;
 	}
 	return (0);
@@ -91,14 +87,16 @@ int	check_nbr(t_list **stack)
 int	check_dups(t_list *stack)
 {
 	t_list	*tmp;
-	int		*val;
+	long	*val;
 
 	tmp = NULL;
-	val = malloc(2 * sizeof(int));
+	val = malloc(2 * sizeof(long));
 	while (stack != NULL)
 	{
 		tmp = stack->next;
-		val[0] = (int)stack->content;
+		val[0] = (long)stack->content;
+		if (val[0] < INT_MIN || val[0] > INT_MAX)
+			return (1);
 		while (tmp != NULL)
 		{
 			val[1] = (int)(tmp->content);

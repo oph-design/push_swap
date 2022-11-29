@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/29 18:36:13 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 19:24:43 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 		return (1);
 	a = convert(argc, argv);
-	if (check_nbr(&a))
+	i = check_spcs(argv[1]);
+	if (a == NULL || (i && argc > 2))
+		return (ft_putendl_fd("\033[0;31mERROR: WRONG FORMAT", 2), 1);
+	if (check_nbr(&a, i))
 		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
 	if (check_dups(a))
 		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);

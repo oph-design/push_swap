@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/29 18:07:47 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 19:23:04 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 //list-utils
 t_list	*convert(int argc, char **argv);
 int		check_dups(t_list *stack);
-int		check_nbr(t_list **stack);
+int		check_nbr(t_list **stack, int split);
 void	print_list(t_list *ls);
+int		check_spcs(char *arg);
 
 //operations
 void	swap(t_list **st, char id);
