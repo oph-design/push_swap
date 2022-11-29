@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/29 16:51:23 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:55:57 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ static int	check_spcs(char *arg)
 
 static void	split_str(char *str, t_list **res)
 {
+	size_t	i;
 	char	**split;
 
+	i = 0;
 	split = ft_split(str, ' ');
-	while (*split != NULL)
-	{
-		ft_lstadd_back(res, ft_lstnew(*split));
-		split++;
-	}
-	//free(*split);
-	//free(split);
+	if (*res == NULL)
+		*res = ft_lstnew(split[i++]);
+	while (split[i] != NULL)
+		ft_lstadd_back(res, ft_lstnew(split[i++]));
+	free(split);
 }
 
 t_list	*convert(int argc, char **argv)
@@ -43,7 +43,11 @@ t_list	*convert(int argc, char **argv)
 	t_list	*res;
 
 	i = 1;
-	res = ft_lstnew(argv[i]);
+	res = NULL;
+	if (check_spcs(argv[i]))
+		split_str(argv[i], &res);
+	else
+		res = ft_lstnew(argv[i]);
 	while (i++ < (argc - 1))
 	{
 		if (check_spcs(argv[i]))
@@ -78,6 +82,7 @@ int	check_nbr(t_list **stack)
 		if (val < INT_MIN || val > INT_MAX)
 			return (1);
 		tmp->content = (void *)val;
+		free(str);
 		tmp = tmp->next;
 	}
 	return (0);
