@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 13:02:41 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/28 16:04:08 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 07:53:17 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,4 @@ static int	check_dups(t_list *stack)
 		stack = stack->next;
 	}
 	return (0);
-}
-
-int	ft_condom(t_list **stack)
-{
-	if (check_nbr(stack))
-		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
-	if (check_dups(*stack))
-		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
-	return (0);
-}
-
-void	print_list(t_list *ls)
-{
-	ft_printf("---\n");
-	while (ls != NULL)
-	{
-		ft_printf("%d\n", *((long *)ls->content));
-		ls = ls->next;
-	}
-	ft_printf("---\n");
 }

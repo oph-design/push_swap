@@ -6,11 +6,22 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/28 16:04:16 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 07:55:27 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	print_list(t_list *ls)
+{
+	ft_printf("---\n");
+	while (ls != NULL)
+	{
+		ft_printf("%d\n", *((long *)ls->content));
+		ls = ls->next;
+	}
+	ft_printf("---\n");
+}
 
 int	main(int argc, char *argv[])
 {
@@ -22,8 +33,10 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 		return (1);
 	a = convert(argc, argv);
-	if (ft_condom(&a))
-		return (1);
+	if (check_nbr(&a))
+		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
+	if (check_dups(a))
+		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
 	i = 0;
 	b = ft_lstnew(&test[i]);
 	while (i++ < 4)
