@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 10:50:38 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/29 18:00:38 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:13:13 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	swap(t_list **stack, char id)
 	tmp->next = (*stack)->next;
 	(*stack)->next = tmp;
 	if (id == 'a' || id == 'b')
-		ft_printf("s%c", id);
+		ft_printf("s%c\n", id);
 }
 
 void	push(t_list **push, t_list **pushto, char id)
@@ -36,7 +36,7 @@ void	push(t_list **push, t_list **pushto, char id)
 	*push = (*push)->next;
 	ft_lstadd_front(pushto, tmp);
 	if (id == 'a' || id == 'b')
-		ft_printf("p%c", id);
+		ft_printf("p%c\n", id);
 }
 
 void	rotate(t_list **stack, char id)
@@ -50,7 +50,7 @@ void	rotate(t_list **stack, char id)
 	*stack = (*stack)->next;
 	free(tmp);
 	if (id == 'a' || id == 'b')
-		ft_printf("r%c", id);
+		ft_printf("r%c\n", id);
 }
 
 void	rrotate(t_list **stack, char id)
@@ -66,5 +66,5 @@ void	rrotate(t_list **stack, char id)
 	free((tmp)->next);
 	(tmp)->next = NULL;
 	if (id == 'a' || id == 'b')
-		ft_printf("rr%c", id);
+		ft_printf("rr%c\n", id);
 }
