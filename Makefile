@@ -6,7 +6,7 @@
 #    By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 13:35:23 by oheinzel          #+#    #+#              #
-#    Updated: 2022/11/28 13:30:33 by oheinzel         ###   ########.fr        #
+#    Updated: 2022/11/29 08:05:48 by oheinzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,9 @@ OBJ_DIR		= obj/
 CC			= gcc
 CFLAGS		= -g -I
 RM			= rm -f
+GREEN		= \033[0;32m
+CYAN		= \033[0:31m
+WHITE		= \033[0m
 
 #Sources
 
@@ -40,10 +43,10 @@ $(NAME):	$(OBJ)
 			@cp libft/libft.a .
 			$(CC) $(CFLAGS) $(INCLUDE) libft.a $(OBJ) -o $(NAME)
 			$(RM) libft.a
-			@echo "push_swap compiled!"
+			@echo "$(GREEN)push_swap compiled!$(WHITE)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "Compiling: $< "
+			@echo "$(CYAN)Compiling: $< "
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(OBJF):
@@ -52,18 +55,15 @@ $(OBJF):
 clean:
 			@$(RM) -rf $(OBJ_DIR)
 			@make clean -C $(LIBFT)
-			@echo "push_swap object files cleaned!"
+			@echo "$(GREEN)push_swap object files cleaned!$(WHITE)"
 
 fclean:		clean
 			@$(RM) -f $(NAME)
 			@$(RM) -f $(LIBFT)/libft.a
-			@echo "ft_printf executable files cleaned!"
-			@echo "libft executable files cleaned!"
+			@echo "$(GREEN)push_swap executable files cleaned!$(WHITE)"
+			@echo "$(GREEN)libft executable files cleaned!$(WHITE)"
 
 re:			fclean all
-			@echo "Cleaned and rebuilt everything for push_swap!"
-
-norm:
-			@norminette $(SRC) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
+			@echo "$(GREEN)Cleaned and rebuilt everything for push_swap!$(WHITE)"
 
 .PHONY:		all clean fclean re

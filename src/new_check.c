@@ -6,13 +6,13 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 13:02:41 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/29 07:53:17 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/11/29 08:03:38 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_nbr(t_list **stack)
+int	check_nbr(t_list **stack)
 {
 	size_t	i;
 	char	*str;
@@ -39,7 +39,7 @@ static int	check_nbr(t_list **stack)
 	return (0);
 }
 
-static int	check_dups(t_list *stack)
+int	check_dups(t_list *stack)
 {
 	t_list	*tmp;
 	long	*val;
