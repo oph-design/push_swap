@@ -70,23 +70,24 @@ int	check_nbr(t_list **stack)
 int	check_dups(t_list *stack)
 {
 	t_list	*tmp;
-	long	*val;
+	int val;
+        int comp;
 
 	tmp = NULL;
-	val = malloc(2 * sizeof(long));
+	val = 0;
+        comp = 0;
 	while (stack != NULL)
 	{
 		tmp = stack->next;
-		val[0] = (long)stack->content;
+		val = (int)stack->content;
 		while (tmp != NULL)
 		{
-			val[1] = (int)(tmp->content);
-			if (val[0] == val[1])
+			comp = (int)(tmp->content);
+			if (val == comp)
 				return (1);
 			tmp = tmp->next;
 		}
 		stack = stack->next;
 	}
-	free(val);
 	return (0);
 }
