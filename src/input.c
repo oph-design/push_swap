@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/30 17:29:20 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/01 10:18:20 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*convert(int argc, char **argv)
 	size_t	i;
 	t_list	*res;
 
-	i = 1;
+	i = 0;
 	res = NULL;
 	while (i++ < (argc - 1))
 		split_str(argv[i], &res);
@@ -50,7 +50,6 @@ int	check_nbr(t_list **stack)
 	while (tmp != NULL)
 	{
 		str = (char *)(tmp->content);
-		i = 0;
 		while (str[i])
 		{
 			if ((!ft_isdigit(str[0]) && str[0] != '-')
@@ -61,8 +60,9 @@ int	check_nbr(t_list **stack)
 		if (val < INT_MIN || val > INT_MAX)
 			return (1);
 		tmp->content = (void *)val;
-                free(str);
 		tmp = tmp->next;
+		free(str);
+		i = 0;
 	}
 	return (0);
 }
@@ -70,12 +70,12 @@ int	check_nbr(t_list **stack)
 int	check_dups(t_list *stack)
 {
 	t_list	*tmp;
-	int val;
-        int comp;
+	int		val;
+	int		comp;
 
 	tmp = NULL;
 	val = 0;
-        comp = 0;
+	comp = 0;
 	while (stack != NULL)
 	{
 		tmp = stack->next;
