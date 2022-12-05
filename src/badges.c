@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   badges.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/05 15:58:51 by oheinzel         ###   ########.fr       */
+/*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
+/*   Updated: 2022/12/05 16:03:32 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	*useless(void *v)
+static void	*useless(void *v)
 {
 	return (v);
 }
 
-void	print_list(t_list *ls)
+static void	print_list(t_list *ls)
 {
 	static int	x = 1;
 
@@ -29,8 +29,8 @@ void	print_list(t_list *ls)
 	}
 	x++;
 }
-//ready to use aber stack a muss vorher kopiert werden Junge
-void	rm_min(t_list **stack, void	*content)
+
+static void	rm_min(t_list **stack, void	*content)
 {
 	t_list	*tmp;
 	t_list	*prev;
@@ -58,7 +58,7 @@ void	rm_min(t_list **stack, void	*content)
 	}
 }
 
-t_list	*min_value(t_list	**stack)
+static t_list	*min_value(t_list	**stack)
 {
 	t_list	*res;
 	t_list	*tmp;
@@ -75,34 +75,25 @@ t_list	*min_value(t_list	**stack)
 	return (ft_lstnew(res->content));
 }
 
-void	test(t_list *a)
+t_list	**get_badges(t_list *stack, unsigned int badge_num, int argc)
 {
-	t_list	*b;
-	t_list	*a2;
+	t_list	**badges;
+	t_list	*cpy;
+	size_t	i;
+	size_t	j;
 
-	a2 = ft_lstmap(a, useless, free);
-	b = min_value(&a2);
-	ft_lstadd_back(&b, min_value(&a2));
-}
-
-int	main(int argc, char *argv[])
-{
-	t_list	*a;
-	t_list	*b;
-	int		i;
-
-	if (argc < 2)
-		return (1);
-	b = NULL;
-	a = convert(argc, argv);
-	argc = 0;
-	if (check_nbr(&a))
-		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
-	if (check_dups(a, &argc))
-		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
-	print_list(a);
-	test(a);
-	print_list(a);
-	//solve(&a, &b, argc);
-	return (0);
+	i = 0;
+	j = 0;
+	cpy = ft_lstmap(stack, useless, free);
+	badges = malloc((badge_num + 1) * sizeof(t_list));
+	while (i < (size_t)badge_num)
+	{
+		badges[i] = min_value(&cpy);
+		while (j++ < (argc / badge_num))
+			ft_lstadd_back(&cpy[i], min_value(&cpy));
+		j = 0;
+		i++;
+	}
+	badges[i] = NULL;
+	return (badges);
 }
