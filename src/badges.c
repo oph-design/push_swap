@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/05 17:14:45 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:18:05 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_list	**get_badges(t_list *stack, unsigned int badge_num, int argc)
 	{
 		badges[i] = min_value(&cpy);
 		while (j++ < (argc / badge_num))
-			ft_lstadd_back(&cpy[i], min_value(&cpy));
+			ft_lstadd_back(&badges[i], min_value(&cpy));
 		j = 0;
 		i++;
 	}
