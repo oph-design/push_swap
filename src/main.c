@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/01 10:11:05 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:45:22 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,84 @@
 
 void	print_list(t_list *ls)
 {
-	ft_printf("---\n");
+	static int	x = 1;
+
+	ft_printf("---%d---\n", x);
 	while (ls != NULL)
 	{
 		ft_printf("%d\n", (int *)ls->content);
 		ls = ls->next;
 	}
-	ft_printf("---\n");
+	x++;
+}
+//ready to use aber stack a muss vorher kopiert werden Junge
+void	rm_min(t_list **stack, void	*content)
+{
+	t_list	*tmp;
+	t_list	*prev;
+
+	tmp = *stack;
+	prev = tmp;
+	if (((int)(tmp)->content) == (int)content)
+	{
+		prev = (tmp)->next;
+		//ft_lstdelone(*stack, free);
+		*stack = prev;
+		return ;
+	}
+	tmp = (tmp)->next;
+	while (tmp != NULL)
+	{
+		if (((int)(tmp)->content) == (int)content)
+		{
+			prev->next = (tmp)->next;
+			//ft_lstdelone(*stack, free);
+			return ;
+		}
+		prev = tmp;
+		tmp = (tmp)->next;
+	}
+}
+
+t_list	*min_value(t_list	**stack)
+{
+	t_list	*res;
+	t_list	*tmp;
+
+	tmp = *stack;
+	res = tmp;
+	while (tmp != NULL)
+	{
+		if ((int)tmp->content < (int)res->content)
+			res = tmp;
+		tmp = tmp->next;
+	}
+	rm_min(stack, res->content);
+	return (ft_lstnew(res->content));
 }
 
 int	main(int argc, char *argv[])
 {
 	t_list	*a;
 	t_list	*b;
-	int		test[5] = {78, 37, 100, -6, 8999};
 	int		i;
 
 	if (argc < 2)
 		return (1);
+	b = NULL;
 	a = convert(argc, argv);
+	argc = 0;
 	if (check_nbr(&a))
 		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
-	if (check_dups(a))
+	if (check_dups(a, &argc))
 		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
-	i = 0;
-	b = ft_lstnew((void *)test[i]);
-	while (i++ < 4)
-		ft_lstadd_back(&b, ft_lstnew((void *)test[i]));
+	print_list(a);
+	b = min_value(&a);
 	print_list(a);
 	print_list(b);
-	swap(&a, 'a');
-	swap(&b, 'b');
-	multi_swap(&a, &b);
-	rotate(&a, 'a');
-	rotate(&b, 'b');
-	multi_rotate(&a, &b);
-	rrotate(&a, 'a');
-	rrotate(&b, 'b');
-	multi_rrotate(&a, &b);
-	push(&a, &b, 'a');
-	push(&b, &a, 'b');
+	ft_lstadd_back(&b, min_value(&a));
 	print_list(a);
 	print_list(b);
-	system("leaks push_swap");
+	//solve(&a, &b, argc);
 	return (0);
 }

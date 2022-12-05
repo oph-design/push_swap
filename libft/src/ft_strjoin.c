@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 11:02:39 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/11/27 16:52:24 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:11:42 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		if (i < len_s1)
 			res[i] = s1[i];
 		else
-		{
-			res[i] = s2[j];
-			j++;
-		}
+			res[i] = s2[j++];
 		i++;
 	}
 	return (res);
