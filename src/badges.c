@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/05 16:03:32 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:31:01 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,6 @@
 static void	*useless(void *v)
 {
 	return (v);
-}
-
-static void	print_list(t_list *ls)
-{
-	static int	x = 1;
-
-	ft_printf("---%d---\n", x);
-	while (ls != NULL)
-	{
-		ft_printf("%d\n", (int *)ls->content);
-		ls = ls->next;
-	}
-	x++;
 }
 
 static void	rm_min(t_list **stack, void	*content)

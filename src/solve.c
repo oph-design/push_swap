@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:02:25 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/05 16:02:32 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:28:23 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	solve(t_list **a, t_list **b, int argc)
 	if (argc > 10)
 		badge_num = 0.013 * argc + 3.75;
 	badges = get_badges(*a, badge_num, argc);
-	while(*badges != NULL)
+	while (*badges != NULL)
+	{
 		print_list(*badges);
+		badges++;
+	}
 }
