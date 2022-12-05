@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/05 17:19:12 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:24:34 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_list	*convert(int argc, char **argv)
 
 	i = 0;
 	res = NULL;
-	while (i++ < (argc - 1))
+	while (i++ < (size_t)(argc - 1))
 		split_str(argv[i], &res);
 	return (res);
 }

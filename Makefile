@@ -6,7 +6,7 @@
 #    By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 13:35:23 by oheinzel          #+#    #+#              #
-#    Updated: 2022/12/05 17:16:30 by oheinzel         ###   ########.fr        #
+#    Updated: 2022/12/05 17:23:32 by oheinzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT		= libft
 SRC_DIR		= src/
 OBJ_DIR		= obj/
 CC			= gcc
-CFLAGS		= -g -I
+CFLAGS		= -g -Wall -Werror -Wextra -I
 RM			= rm -f
 GREEN		= \033[0;32m
 CYAN		= \033[0:31m

@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/05 17:18:05 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:26:02 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 static void	*useless(void *v)
 {
-	return (v);
+	void	*r;
+
+	r = v;
+	return (r);
 }
 
 static void	del(void *v)
 {
+	void	*r;
+
+	r = v;
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/05 16:32:06 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:23:50 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int argc, char *argv[])
 {
 	t_list	*a;
 	t_list	*b;
-	int		i;
 
 	if (argc < 2)
 		return (1);
