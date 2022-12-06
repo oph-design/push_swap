@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/05 17:26:02 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/06 08:29:54 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,6 @@ static void	*useless(void *v)
 	return (r);
 }
 
-static void	del(void *v)
-{
-	void	*r;
-
-	r = v;
-	return ;
-}
-
 static void	rm_min(t_list **stack, void	*content)
 {
 	t_list	*tmp;
@@ -38,7 +30,7 @@ static void	rm_min(t_list **stack, void	*content)
 	if (((int)(tmp)->content) == (int)content)
 	{
 		prev = (tmp)->next;
-		ft_lstdelone(*stack, del);
+		free(tmp);
 		*stack = prev;
 		return ;
 	}
@@ -48,7 +40,7 @@ static void	rm_min(t_list **stack, void	*content)
 		if (((int)(tmp)->content) == (int)content)
 		{
 			prev->next = (tmp)->next;
-			ft_lstdelone(*stack, del);
+			free(tmp);
 			return ;
 		}
 		prev = tmp;
@@ -61,6 +53,8 @@ static t_list	*min_value(t_list	**stack)
 	t_list	*res;
 	t_list	*tmp;
 
+	if (!stack || !(*stack))
+		return (NULL);
 	tmp = *stack;
 	res = tmp;
 	while (tmp != NULL)
@@ -82,7 +76,7 @@ t_list	**get_badges(t_list *stack, unsigned int badge_num, int argc)
 
 	i = 0;
 	j = 0;
-	cpy = ft_lstmap(stack, useless, free);
+	cpy = ft_lstmap(stack, useless, NULL);
 	badges = malloc((badge_num + 1) * sizeof(t_list));
 	while (i < (size_t)badge_num)
 	{

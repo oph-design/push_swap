@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:02:25 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/05 17:26:38 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/06 08:37:42 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void	solve(t_list **a, t_list **b, int argc)
 		print_list(*badges);
 		badges++;
 	}
+	*b = ft_lstnew((*a)->content);
 }
