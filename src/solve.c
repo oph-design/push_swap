@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:02:25 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/06 13:38:57 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:58:06 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,15 @@ void	ft_lstclear_ps(t_list **lst)
 
 int	compare(t_list *stack, t_list *badge)
 {
+	if (!stack)
+		return (1);
 	while (badge != NULL)
 	{
 		if ((int)stack->content == (int)badge->content)
 			return (1);
 		badge = badge->next;
 	}
+	return (0);
 }
 
 void	presort(t_list **a, t_list **b, t_list *badges, unsigned int *badge)
@@ -77,7 +80,7 @@ void	solve(t_list **a, t_list **b, int argc)
 	badge[0] = (unsigned int)argc;
 	badge[1] = 1;
 	if (argc > 10)
-		badge_num = 0.013 * argc + 3.75;
+		badge[1] = 0.013 * argc + 3.75;
 	badge[2] = badge[0] / badge[1];
 	badges = get_badges(*a, badge[1], badge[0]);
 	i = 0;
@@ -85,5 +88,6 @@ void	solve(t_list **a, t_list **b, int argc)
 		presort(a, b, badges[i++], badge);
 	i = 0;
 	while (badges[i] != NULL)
-		ft_lstclear_ps(badges[i++]);
+		ft_lstclear_ps(&badges[i++]);
+	free(badges);
 }
