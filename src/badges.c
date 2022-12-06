@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/06 11:50:32 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/06 16:38:50 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ static t_list	*min_value(t_list	**stack)
 	return (ft_lstnew(res->content));
 }
 
-t_list	**get_badges(t_list *stack, unsigned int badge_num, int argc)
+t_list	**get_batches(t_list *stack, unsigned int batch_num, int argc)
 {
-	t_list	**badges;
+	t_list	**batches;
 	t_list	*cpy;
 	size_t	i;
 	size_t	j;
@@ -77,15 +77,15 @@ t_list	**get_badges(t_list *stack, unsigned int badge_num, int argc)
 	i = 0;
 	j = 0;
 	cpy = ft_lstmap(stack, useless, NULL);
-	badges = malloc((badge_num + 1) * sizeof(t_list));
-	while (i < (size_t)badge_num)
+	batches = malloc((batch_num + 1) * sizeof(t_list));
+	while (i < (size_t)batch_num)
 	{
-		badges[i] = min_value(&cpy);
-		while (j++ < (argc / badge_num))
-			ft_lstadd_back(&badges[i], min_value(&cpy));
+		batches[i] = min_value(&cpy);
+		while (j++ < (argc / batch_num))
+			ft_lstadd_back(&batches[i], min_value(&cpy));
 		j = 0;
 		i++;
 	}
-	badges[i] = NULL;
-	return (badges);
+	batches[i] = NULL;
+	return (batches);
 }

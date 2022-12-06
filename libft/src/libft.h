@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:57:07 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/05 16:51:57 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/06 16:27:18 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_isascii(int c);
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
 void	ft_bzero(void *s, size_t n);
-long	ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(char *s1);
 

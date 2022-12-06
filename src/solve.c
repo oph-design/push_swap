@@ -6,32 +6,13 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:02:25 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/06 13:58:06 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:04:34 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstclear_ps(t_list **lst)
-{
-	t_list	*tmp;
-
-	if (!lst)
-		return ;
-	if (!*lst)
-	{
-		free(*lst);
-		return ;
-	}
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		free(*lst);
-		*lst = tmp;
-	}
-}
-
-int	compare(t_list *stack, t_list *badge)
+static int	compare(t_list *stack, t_list *badge)
 {
 	if (!stack)
 		return (1);
@@ -41,53 +22,72 @@ int	compare(t_list *stack, t_list *badge)
 			return (1);
 		badge = badge->next;
 	}
+	ft_printf("test");
 	return (0);
 }
 
-void	presort(t_list **a, t_list **b, t_list *badges, unsigned int *badge)
+static void	rotate_batch(t_list **stack, size_t j, unsigned int args)
+{
+	if (j > (args / 2))
+	{
+		j = args - j;
+		while (j--)
+			rrotate(stack, 'a');
+		return ;
+	}
+	while (j--)
+		rotate(stack, 'a');
+}
+
+static void	presort(t_list **a, t_list **b, t_list *batch, unsigned int *stats)
 {
 	size_t	i;
 	size_t	j;
+	t_list	*start;
 
 	i = 0;
-	while (i < badge[2])
+	j = 0;
+	start = *a;
+	while (i < stats[2])
 	{
-		while (!compare(*a, badges) && j++)
+		while (!compare(*a, batch) && *a != NULL)
+		{
 			*a = (*a)->next;
-		if (j > (badge[0] / 2))
-		{
-			j = badge[0] - j;
-			while (j--)
-				rrotate(a, 'a');
+			j++;
 		}
-		else
-		{
-			while (j--)
-				rotate(a, 'a');
-		}
+		*a = start;
+		rotate_batch(a, j, stats[0]);
 		push(a, b, 'b');
 		j = 0;
+		stats[0]--;
 		i++;
 	}
 }
 
+/*
+*	Batch_Stats Array:
+*	[0] = total number of arguments
+*	[1] = number of batches
+*	[2] = number of arguments per batch
+*/
+
 void	solve(t_list **a, t_list **b, int argc)
 {
-	unsigned int	badge[3];
-	t_list			**badges;
+	unsigned int	batch_stats[3];
+	t_list			**batches;
 	size_t			i;
 
-	badge[0] = (unsigned int)argc;
-	badge[1] = 1;
+	batch_stats[0] = (unsigned int)argc;
+	batch_stats[1] = 1;
 	if (argc > 10)
-		badge[1] = 0.013 * argc + 3.75;
-	badge[2] = badge[0] / badge[1];
-	badges = get_badges(*a, badge[1], badge[0]);
+		batch_stats[1] = 0.013 * argc + 3.75;
+	batch_stats[2] = batch_stats[0] / batch_stats[1];
+	batches = get_batches(*a, batch_stats[1], batch_stats[0]);
 	i = 0;
-	while (badges[i] != NULL)
-		presort(a, b, badges[i++], badge);
+	while (batches[i] != NULL)
+		presort(a, b, batches[i++], batch_stats);
 	i = 0;
-	while (badges[i] != NULL)
-		ft_lstclear_ps(&badges[i++]);
-	free(badges);
+	while (batches[i] != NULL)
+		ft_lstclear_ps(&batches[i++]);
+	free(batches);
 }

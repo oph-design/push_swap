@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 16:41:56 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/06 16:26:57 by oheinzel         ###   ########.fr       */
+/*   Created: 2022/12/06 16:24:55 by oheinzel          #+#    #+#             */
+/*   Updated: 2022/12/06 16:26:30 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_atoi(const char *str)
+void	ft_lstclear_ps(t_list **lst)
 {
-	int	i;
-	int	f;
-	int	r;
+	t_list	*tmp;
+
+	if (!lst)
+		return ;
+	if (!*lst)
+	{
+		free(*lst);
+		return ;
+	}
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
+	}
+}
+
+long	ft_atol(const char *str)
+{
+	int		i;
+	long	f;
+	long	r;
 
 	i = 0;
 	f = 1;
