@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/06 09:19:28 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:39:24 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int argc, char *argv[])
 	if (check_dups(a, &argc))
 		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
 	solve(&a, &b, argc);
-	//system("leaks push_swap");
+	print_list(b);
+	system("leaks push_swap");
 	return (0);
 }
