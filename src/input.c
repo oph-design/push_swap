@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/06 08:06:55 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:20:11 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int	check_dups(t_list *stack, int *argc)
 		while (tmp != NULL)
 		{
 			comp = (int)(tmp->content);
-			//if (val == comp)
-				//return (1);
+			if (val == comp)
+				return (1);
 			tmp = tmp->next;
 		}
 		(*argc)++;
