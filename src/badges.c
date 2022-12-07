@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/07 13:40:08 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/07 14:58:36 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_list	**get_batches(t_list *stack, unsigned int batch_num, int argc)
 	j = 0;
 	cpy = ft_lstmap(stack, useless, NULL);
 	batches = malloc((batch_num + 1) * sizeof(t_list));
-	while (i < (size_t)batch_num)
+	while (i < (size_t)(batch_num))
 	{
 		batches[i] = min_value(&cpy);
 		while (j++ < ((argc / batch_num) - 1))
@@ -87,5 +87,6 @@ t_list	**get_batches(t_list *stack, unsigned int batch_num, int argc)
 		i++;
 	}
 	batches[i] = NULL;
+	//ft_lstclear_ps(&cpy);
 	return (batches);
 }
