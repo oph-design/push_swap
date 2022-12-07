@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:02:25 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/06 17:04:34 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/07 13:44:31 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ static int	compare(t_list *stack, t_list *badge)
 		return (1);
 	while (badge != NULL)
 	{
-		if ((int)stack->content == (int)badge->content)
+		if ((int)(stack->content) == (int)(badge->content))
 			return (1);
 		badge = badge->next;
 	}
-	ft_printf("test");
 	return (0);
 }
 
@@ -43,21 +42,21 @@ static void	presort(t_list **a, t_list **b, t_list *batch, unsigned int *stats)
 {
 	size_t	i;
 	size_t	j;
-	t_list	*start;
+	t_list	*tmp;
 
 	i = 0;
 	j = 0;
-	start = *a;
+	tmp = *a;
 	while (i < stats[2])
 	{
-		while (!compare(*a, batch) && *a != NULL)
+		while (!compare(tmp, batch) && tmp != NULL)
 		{
-			*a = (*a)->next;
+			tmp = (tmp)->next;
 			j++;
 		}
-		*a = start;
 		rotate_batch(a, j, stats[0]);
 		push(a, b, 'b');
+		tmp = *a;
 		j = 0;
 		stats[0]--;
 		i++;
@@ -84,8 +83,10 @@ void	solve(t_list **a, t_list **b, int argc)
 	batch_stats[2] = batch_stats[0] / batch_stats[1];
 	batches = get_batches(*a, batch_stats[1], batch_stats[0]);
 	i = 0;
+	print_list(*a);
 	while (batches[i] != NULL)
 		presort(a, b, batches[i++], batch_stats);
+	print_list(*b);
 	i = 0;
 	while (batches[i] != NULL)
 		ft_lstclear_ps(&batches[i++]);

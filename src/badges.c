@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/06 16:38:50 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/07 13:40:08 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_list	**get_batches(t_list *stack, unsigned int batch_num, int argc)
 	while (i < (size_t)batch_num)
 	{
 		batches[i] = min_value(&cpy);
-		while (j++ < (argc / batch_num))
+		while (j++ < ((argc / batch_num) - 1))
 			ft_lstadd_back(&batches[i], min_value(&cpy));
 		j = 0;
 		i++;
