@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:02:25 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/07 16:39:03 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:59:49 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static void	presort(t_list **a, t_list **b, t_list *batch, unsigned int *stats)
 *	[0] = total number of arguments
 *	[1] = number of batches
 *	[2] = number of arguments per batch
+*	[3] = number of operations
 */
 
 void	solve(t_list **a, t_list **b, int argc)
@@ -88,12 +89,12 @@ void	solve(t_list **a, t_list **b, int argc)
 	size_t			i;
 	int				count;
 
-	batch_stats[3] = 0;
 	batch_stats[0] = (unsigned int)argc;
 	batch_stats[1] = 1;
 	if (argc > 10)
 		batch_stats[1] = 0.013 * argc + 3.75;
 	batch_stats[2] = batch_stats[0] / batch_stats[1];
+	batch_stats[3] = 0;
 	batches = get_batches(*a, batch_stats[1], batch_stats[0]);
 	i = 0;
 	while (batches[i + 1] != NULL)
