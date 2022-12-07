@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   badges.c                                           :+:      :+:    :+:   */
+/*   batches.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/07 14:58:36 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:56:28 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,5 @@ t_list	**get_batches(t_list *stack, unsigned int batch_num, int argc)
 		i++;
 	}
 	batches[i] = NULL;
-	//ft_lstclear_ps(&cpy);
 	return (batches);
 }

@@ -6,7 +6,7 @@
 #    By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/14 15:57:16 by oheinzel          #+#    #+#              #
-#    Updated: 2022/11/27 18:40:46 by oheinzel         ###   ########.fr        #
+#    Updated: 2022/12/07 16:52:49 by oheinzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,6 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			@$(AR) $(NAME) $(OBJS)
 			@ranlib $(NAME)
-			@echo "Libft compiled!"
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c | $(OBJSF)
 			@$(CC) $(CFLAGS) -c $< -o $@
@@ -94,13 +93,10 @@ $(OBJSF):
 clean:
 			@$(RM) -rf $(OBJS_DIR)
 			@$(RM) -f $(OBJSF)
-			@echo "libft objects files cleaned!"
 
 fclean:		clean
 			@$(RM) -f $(NAME)
-			@echo "libft executable files cleaned!"
 
 re:			fclean all
-			@echo "Cleaned and rebuilt everything for libft!"
 
 .PHONY:		all clean fclean re
