@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/08 10:47:15 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/08 23:50:02 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	multi_swap(t_list **a, t_list **b);
 
 //algorithm
 void	solve(t_list **a, t_list **b, int argc);
-void	presort(t_list **a, t_list **b, t_list *batch, unsigned int *stats);
-void	sort(t_list **a, t_list **b, t_list *batch, unsigned int *stats);
+void	presort(t_list **a, t_list **b, t_list *batch, int *stats);
+void	sort(t_list **a, t_list **b, t_list *batch, int *stats);
 
 
 #endif

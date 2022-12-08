@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:02:25 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/08 21:23:25 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/08 23:51:17 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,32 @@ static int	compare(t_list *stack, t_list *badge)
 	return (0);
 }
 
-static int	rotate_batch(t_list **stack, size_t j, unsigned int args, char id)
+static int	rotate_batch(t_list **stack, int j, int args, char id)
 {
 	int	count;
 
 	count = 0;
 	ft_printf("j: %d\n", j);
-	if (j > (size_t)(args / 2))
-	{
-		j = (size_t)(args) - j;
-		while (j-- && ++count)
-			rrotate(stack, id);
-		return (count);
-	}
+	// if (j > (args / 2))
+	// {
+	// 	j = args - j;
+	// 	ft_printf("j after: %d\n", j);
+	// 	while (j-- && ++count)
+	// 		rrotate(stack, id);
+	// 	return (count);
+	// }
+	ft_printf("j after: %d\n", j);
 	while (j-- && ++count)
 		rotate(stack, id);
 	return (count);
 }
 
-void	presort(t_list **a, t_list **b, t_list *batch, unsigned int *stats)
+void	presort(t_list **a, t_list **b, t_list *batch, int *stats)
 {
 	size_t			i;
-	size_t			j;
+	int				j;
 	t_list			*tmp;
-	unsigned int	count;
+	int				count;
 
 	i = 0;
 	j = 0;
@@ -69,9 +71,9 @@ void	presort(t_list **a, t_list **b, t_list *batch, unsigned int *stats)
 	stats[3] += count;
 }
 
-static size_t	find_max(t_list **stack, t_list *batch)
+static int	find_max(t_list **stack, t_list *batch)
 {
-	size_t	count;
+	int		count;
 	t_list	*tmp_stack;
 	t_list	*tmp_batch;
 	t_list	*max;
@@ -98,10 +100,10 @@ static size_t	find_max(t_list **stack, t_list *batch)
 	return (count);
 }
 
-void	sort(t_list **a, t_list **b, t_list *batch, unsigned int *stats)
+void	sort(t_list **a, t_list **b, t_list *batch, int *stats)
 {
 	size_t			i;
-	unsigned int	count;
+	int				count;
 
 	i = 0;
 	count = 0;

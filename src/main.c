@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/08 20:59:59 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/08 23:43:17 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 
 void	solve(t_list **a, t_list **b, int argc)
 {
-	unsigned int	batch_stats[4];
+	int				batch_stats[4];
 	t_list			**batches;
 	size_t			i;
 	int				count;
 
-	batch_stats[0] = (unsigned int)argc;
+	batch_stats[0] = argc;
 	batch_stats[1] = 1;
 	if (argc > 10)
 		batch_stats[1] = 0.013 * argc + 3.75;
