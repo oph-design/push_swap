@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/06 16:41:49 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:47:15 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	print_list(t_list *ls);
 t_list	**get_batches(t_list *stack, unsigned int badge_num, int argc);
 long	ft_atol(const char *str);
 void	ft_lstclear_ps(t_list **lst);
+void	rm_val(t_list **stack, void	*content);
 
 //operations
 void	swap(t_list **st, char id);
@@ -37,5 +38,8 @@ void	multi_swap(t_list **a, t_list **b);
 
 //algorithm
 void	solve(t_list **a, t_list **b, int argc);
+void	presort(t_list **a, t_list **b, t_list *batch, unsigned int *stats);
+void	sort(t_list **a, t_list **b, t_list *batch, unsigned int *stats);
+
 
 #endif

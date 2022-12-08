@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/07 16:56:28 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/08 10:25:28 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,6 @@ static void	*useless(void *v)
 
 	r = v;
 	return (r);
-}
-
-static void	rm_min(t_list **stack, void	*content)
-{
-	t_list	*tmp;
-	t_list	*prev;
-
-	tmp = *stack;
-	prev = tmp;
-	if (((int)(tmp)->content) == (int)content)
-	{
-		prev = (tmp)->next;
-		free(tmp);
-		*stack = prev;
-		return ;
-	}
-	tmp = (tmp)->next;
-	while (tmp != NULL)
-	{
-		if (((int)(tmp)->content) == (int)content)
-		{
-			prev->next = (tmp)->next;
-			free(tmp);
-			return ;
-		}
-		prev = tmp;
-		tmp = (tmp)->next;
-	}
 }
 
 static t_list	*min_value(t_list	**stack)
@@ -63,7 +35,7 @@ static t_list	*min_value(t_list	**stack)
 			res = tmp;
 		tmp = tmp->next;
 	}
-	rm_min(stack, res->content);
+	rm_val(stack, res->content);
 	return (ft_lstnew(res->content));
 }
 
