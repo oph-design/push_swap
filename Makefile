@@ -6,7 +6,7 @@
 #    By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 13:35:23 by oheinzel          #+#    #+#              #
-#    Updated: 2022/12/07 16:54:53 by oheinzel         ###   ########.fr        #
+#    Updated: 2022/12/09 15:32:29 by oheinzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ WHITE		= \033[0m
 
 #Sources
 
-SRC_FILES	=	operations main input mult_oprs batches solve utils
+SRC_FILES	=	operations main input mult_oprs batches sort utils
 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

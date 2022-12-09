@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/06 09:27:01 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:00:47 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_nbr(t_list **stack)
 				|| (!ft_isdigit(str[i++]) && i != 0))
 				return (1);
 		}
-		val = ft_atoi(str);
+		val = ft_atol(str);
 		if (val < INT_MIN || val > INT_MAX)
 			return (1);
 		tmp->content = (void *)val;

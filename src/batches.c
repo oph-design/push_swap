@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/08 10:25:28 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:32:49 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_list	*min_value(t_list	**stack)
 	return (ft_lstnew(res->content));
 }
 
-t_list	**get_batches(t_list *stack, unsigned int batch_num, int argc)
+t_list	**get_batches(t_list *stack, int batch_num, int argc)
 {
 	t_list	**batches;
 	t_list	*cpy;

@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/08 23:43:17 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:59:31 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
 *	[0] = total number of arguments
 *	[1] = number of batches
 *	[2] = number of arguments per batch
-*	[3] = number of operations
 */
 
 void	solve(t_list **a, t_list **b, int argc)
 {
-	int				batch_stats[4];
+	int				batch_stats[3];
 	t_list			**batches;
 	size_t			i;
 	int				count;
@@ -32,7 +31,6 @@ void	solve(t_list **a, t_list **b, int argc)
 	if (argc > 10)
 		batch_stats[1] = 0.013 * argc + 3.75;
 	batch_stats[2] = batch_stats[0] / batch_stats[1];
-	batch_stats[3] = 0;
 	batches = get_batches(*a, batch_stats[1], batch_stats[0]);
 	i = 0;
 	while (batches[i] != NULL)
@@ -40,9 +38,6 @@ void	solve(t_list **a, t_list **b, int argc)
 	batch_stats[0] = argc;
 	while (i--)
 		sort(a, b, batches[i], batch_stats);
-	ft_printf("COUNT: %d\n", batch_stats[3]);
-	print_list(*b);
-	print_list(*a);
 	free(batches);
 }
 
@@ -56,10 +51,10 @@ int	main(int argc, char *argv[])
 	b = NULL;
 	a = convert(argc, argv);
 	argc = 0;
-	if (check_nbr(&a))
-		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
-	if (check_dups(a, &argc))
-		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
+	check_nbr(&a);
+		//return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
+	check_dups(a, &argc);
+		//return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
 	solve(&a, &b, argc);
 	system("leaks push_swap");
 	return (0);

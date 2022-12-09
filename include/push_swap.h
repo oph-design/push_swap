@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/08 23:50:02 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:29:26 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ t_list	*convert(int argc, char **argv);
 int		check_dups(t_list *stack, int *argc);
 int		check_nbr(t_list **stack);
 void	print_list(t_list *ls);
-t_list	**get_batches(t_list *stack, unsigned int badge_num, int argc);
+t_list	**get_batches(t_list *stack, int badge_num, int argc);
 long	ft_atol(const char *str);
-void	ft_lstclear_ps(t_list **lst);
 void	rm_val(t_list **stack, void	*content);
 
 //operations
@@ -37,9 +36,7 @@ void	multi_rotate(t_list **a, t_list **b);
 void	multi_swap(t_list **a, t_list **b);
 
 //algorithm
-void	solve(t_list **a, t_list **b, int argc);
 void	presort(t_list **a, t_list **b, t_list *batch, int *stats);
 void	sort(t_list **a, t_list **b, t_list *batch, int *stats);
-
 
 #endif
