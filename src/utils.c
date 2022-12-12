@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:24:55 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/09 15:28:22 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:22:18 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,24 @@ void	print_list(t_list *ls)
 	}
 	ft_printf("-----\n");
 	x++;
+}
+
+int	check_for_order(t_list *stack, int argc)
+{
+	int		count;
+	t_list	*tmp;
+
+	tmp = stack;
+	stack = stack->next;
+	count = 1;
+	while (stack != NULL
+		&& (int)stack->content > (int)tmp->content)
+	{
+		tmp = stack;
+		stack = stack->next;
+		count++;
+	}
+	if (count == argc)
+		return (1);
+	return (0);
 }

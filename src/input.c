@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/09 17:00:47 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:02:27 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,23 @@ t_list	*convert(int argc, char **argv)
 	return (res);
 }
 
+static int	check_digit(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (!ft_isdigit(str[i]) && str[i] != '-')
+		return (1);
+	if (str[i] == '-' && !ft_isdigit(str[++i]))
+		return (1);
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i++]))
+			return (1);
+	}
+	return (0);
+}
+
 int	check_nbr(t_list **stack)
 {
 	size_t	i;
@@ -50,12 +67,8 @@ int	check_nbr(t_list **stack)
 	while (tmp != NULL)
 	{
 		str = (char *)(tmp->content);
-		while (str[i])
-		{
-			if ((!ft_isdigit(str[0]) && str[0] != '-')
-				|| (!ft_isdigit(str[i++]) && i != 0))
-				return (1);
-		}
+		if (check_digit(str))
+			return (1);
 		val = ft_atol(str);
 		if (val < INT_MIN || val > INT_MAX)
 			return (1);
