@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 10:41:42 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:54:45 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_list	**get_batches(t_list *stack, int badge_num, int argc);
 long	ft_atol(const char *str);
 void	rm_val(t_list **stack, void	*content);
 int		check_for_order(t_list *stack, int argc);
+void	rotate_batch(t_list **stack, int j, int args, char id);
 
 //operations
 void	swap(t_list **st, char id);

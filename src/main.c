@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 14:49:37 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:02:40 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ void	solve(t_list **a, t_list **b, int argc)
 	int				batch_stats[4];
 	t_list			**batches;
 	size_t			i;
-	int				count;
 
 	batch_stats[0] = argc;
 	batch_stats[1] = 1;
-	if (argc > 10)
+	if (argc >= 60)
 		batch_stats[1] = 0.018 * argc + 3.25;
 	batch_stats[2] = batch_stats[0] / batch_stats[1];
 	batch_stats[3] = batch_stats[0] - (batch_stats[2] * (batch_stats[1] - 1));
@@ -59,6 +58,8 @@ int	main(int argc, char *argv[])
 		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
 	if (argc == 1 || check_for_order(a, argc))
 		return (0);
+	if (argc < 15)
+		return (quicksort(a, b, argc), 0);
 	solve(&a, &b, argc);
 	// print_list(a);
 	// system("leaks push_swap");

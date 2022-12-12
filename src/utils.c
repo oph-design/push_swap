@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:24:55 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 11:44:26 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:53:02 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,19 @@ void	print_list(t_list *ls)
 	}
 	ft_printf("-----\n");
 	x++;
+}
+
+void	rotate_batch(t_list **stack, int j, int args, char id)
+{
+	if (j > (args / 2))
+	{
+		j = args - j;
+		while (j--)
+			rrotate(stack, id);
+		return ;
+	}
+	while (j--)
+		rotate(stack, id);
 }
 
 int	check_for_order(t_list *stack, int argc)
