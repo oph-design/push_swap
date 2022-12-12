@@ -52,12 +52,14 @@ static void	sort_thr(t_list	**a, t_list	**b)
 		rotate(a, 'a');
 }
 
-static void	sort_fv(t_list **a, t_list **b)
+static int	quicksort(t_list **a, t_list **b, int argc)
 {
 	int	min;
 	int	i;
 
-	i = 2;
+	if (argc == 2)
+		return (swap(a, 'a'), 0);
+	i = argc - 3;
 	while (i--)
 	{
 		min = find_min(a);
@@ -67,19 +69,10 @@ static void	sort_fv(t_list **a, t_list **b)
 			rrotate(a, 'a');
 		push (a, b, 'b');
 	}
-	if ((int)(*b)->content < (int)(*b)->next->content)
+	if (*b && (int)(*b)->content < (int)(*b)->next->content)
 		swap(b, 'b');
 	sort_thr(a, b);
 	push(b, a, 'a');
 	push(b, a, 'a');
-}
-
-void	quicksort(t_list **a, t_list **b, int argc)
-{
-	if (argc == 2)
-		swap(a, 'a');
-	if (argc == 3)
-		sort_thr(a, b);
-	if (argc == 5)
-		sort_fv(a, b);
+	return (0);
 }
