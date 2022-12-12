@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 10:23:05 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:49:37 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 *	[0] = total number of arguments
 *	[1] = number of batches
 *	[2] = number of arguments per batch
+*	[3] = arguments of last batch
 */
 
 void	solve(t_list **a, t_list **b, int argc)
 {
-	int				batch_stats[3];
+	int				batch_stats[4];
 	t_list			**batches;
 	size_t			i;
 	int				count;
@@ -29,8 +30,9 @@ void	solve(t_list **a, t_list **b, int argc)
 	batch_stats[0] = argc;
 	batch_stats[1] = 1;
 	if (argc > 10)
-		batch_stats[1] = 0.013 * argc + 3.75;
+		batch_stats[1] = 0.018 * argc + 3.25;
 	batch_stats[2] = batch_stats[0] / batch_stats[1];
+	batch_stats[3] = batch_stats[0] - (batch_stats[2] * (batch_stats[1] - 1));
 	batches = get_batches(*a, batch_stats[1], batch_stats[0]);
 	i = 0;
 	while (batches[i] != NULL)

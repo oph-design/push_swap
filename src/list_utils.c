@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:24:55 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 10:22:18 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:44:26 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,15 @@ long	ft_atol(const char *str)
 void	print_list(t_list *ls)
 {
 	static int	x;
+	int			c;
 
+	c = 1;
 	ft_printf("---%d---\n", x);
 	while (ls != NULL)
 	{
-		ft_printf("%d\n", (int *)ls->content);
+		ft_printf("%d	%d\n", (int *)ls->content, c);
 		ls = ls->next;
+		c++;
 	}
 	ft_printf("-----\n");
 	x++;

@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:02:25 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 10:21:22 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:40:24 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,14 @@ void	presort(t_list **a, t_list **b, t_list *batch, int *stats)
 	size_t			i;
 	int				j;
 	t_list			*tmp;
+	static int		check = 0;
 
-	i = 0;
 	j = 0;
 	tmp = *a;
-	while (i < stats[2])
+	i = stats[2];
+	if (check == (stats[1] - 1))
+		i = stats[3];
+	while (i)
 	{
 		while (!compare(tmp, batch) && ++j)
 			tmp = (tmp)->next;
@@ -56,8 +59,9 @@ void	presort(t_list **a, t_list **b, t_list *batch, int *stats)
 		tmp = *a;
 		j = 0;
 		stats[0]--;
-		i++;
+		i--;
 	}
+	check++;
 }
 
 static int	find_max(t_list **stack, t_list *batch)
@@ -92,12 +96,14 @@ void	sort(t_list **a, t_list **b, t_list *batch, int *stats)
 {
 	size_t	i;
 
-	i = 0;
-	while (i < stats[2] && batch != NULL)
+	i = stats[2];
+	if (*a == NULL)
+		i = stats[3];
+	while (i && batch != NULL)
 	{
 		rotate_batch(b, find_max(b, batch), stats[0], 'b');
 		push(b, a, 'a');
 		stats[0]--;
-		i++;
+		i--;
 	}
 }
