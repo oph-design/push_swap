@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 14:54:45 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:08:17 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	multi_swap(t_list **a, t_list **b);
 //algorithm
 void	presort(t_list **a, t_list **b, t_list *batch, int *stats);
 void	sort(t_list **a, t_list **b, t_list *batch, int *stats);
+void	quicksort(t_list **a, t_list **b, int argc);
 
 #endif

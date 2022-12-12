@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 15:02:40 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:26:18 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ int	main(int argc, char *argv[])
 	a = convert(argc, argv);
 	argc = 0;
 	if (check_nbr(&a))
-		return (ft_putendl_fd("\033[0;31mERROR: NON INTEGER", 2), 1);
+		return (ft_putendl_fd("Error", 2), 1);	// \033[0;31mERROR: NON INTEGER
 	if (check_dups(a, &argc))
-		return (ft_putendl_fd("\033[0;31mERROR: DUPLICATE", 2), 1);
+		return (ft_putendl_fd("Error", 2), 1);	// \033[0;31mERROR: DUPLICATE
 	if (argc == 1 || check_for_order(a, argc))
 		return (0);
 	if (argc < 15)
-		return (quicksort(a, b, argc), 0);
+		return (quicksort(&a, &b, argc), 0);
 	solve(&a, &b, argc);
-	// print_list(a);
+	//print_list(a);
 	// system("leaks push_swap");
 	return (0);
 }
