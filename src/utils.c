@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:24:55 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 15:54:35 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:11:26 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ void	print_list(t_list *ls)
 
 void	rotate_batch(t_list **stack, int j, int args, char id)
 {
+	if (j == 1)
+	{
+		swap(stack, id);
+		return ;
+	}
 	if (j > (args / 2))
 	{
 		j = args - j;

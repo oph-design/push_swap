@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 10:02:27 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/13 12:41:44 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static int	check_digit(char *str)
 	size_t	i;
 
 	i = 0;
+	if (!str || !(*str))
+		return (1);
 	if (!ft_isdigit(str[i]) && str[i] != '-')
 		return (1);
 	if (str[i] == '-' && !ft_isdigit(str[++i]))

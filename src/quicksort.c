@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:07:13 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 18:10:32 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/13 09:42:09 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	find_min(t_list	**stack)
 
 static void	sort_thr(t_list	**a, t_list	**b)
 {
-	int min;
+	int	min;
 
 	min = find_min(a);
 	if ((int)(*a)->content < (int)(*a)->next->content
@@ -52,7 +52,7 @@ static void	sort_thr(t_list	**a, t_list	**b)
 		rotate(a, 'a');
 }
 
-static int	quicksort(t_list **a, t_list **b, int argc)
+int	quicksort(t_list **a, t_list **b, int argc)
 {
 	int	min;
 	int	i;
@@ -69,7 +69,7 @@ static int	quicksort(t_list **a, t_list **b, int argc)
 			rrotate(a, 'a');
 		push (a, b, 'b');
 	}
-	if (*b && (int)(*b)->content < (int)(*b)->next->content)
+	if (*b && (*b)->next && (int)(*b)->content < (int)(*b)->next->content)
 		swap(b, 'b');
 	sort_thr(a, b);
 	push(b, a, 'a');
