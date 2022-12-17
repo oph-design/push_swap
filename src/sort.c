@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:02:25 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 14:53:30 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:01:55 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	sort(t_list **a, t_list **b, t_list *batch, int *stats)
 	size_t	i;
 
 	i = stats[2];
-	if (*a == NULL)
-		i = stats[3];
+	if ((*a)->next->next->next->next->next == NULL)
+		i = stats[3] - 5;
 	while (i && batch != NULL)
 	{
 		rotate_batch(b, find_max(b, batch), stats[0], 'b');

@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:24:55 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/13 16:11:26 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:07:34 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,6 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	return (f * r);
-}
-
-void	print_list(t_list *ls)
-{
-	static int	x;
-
-	ft_printf("---%d---\n", x);
-	while (ls != NULL)
-	{
-		ft_printf("%d\n", (int *)ls->content);
-		ls = ls->next;
-	}
-	x++;
 }
 
 void	rotate_batch(t_list **stack, int j, int args, char id)

@@ -6,7 +6,7 @@
 #    By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 13:35:23 by oheinzel          #+#    #+#              #
-#    Updated: 2022/12/12 15:51:35 by oheinzel         ###   ########.fr        #
+#    Updated: 2022/12/17 15:05:57 by oheinzel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ INCLUDE		= include
 LIBFT		= libft
 SRC_DIR		= src/
 OBJ_DIR		= obj/
-CC			= gcc
-CFLAGS		= -g -I
+CC			= cc
+CFLAGS		= -Wall -Werror -Wextra -I
 RM			= rm -f
 GREEN		= \033[0;32m
 CYAN		= \033[0;36m

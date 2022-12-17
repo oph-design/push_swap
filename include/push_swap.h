@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:11:36 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/13 09:35:30 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:07:58 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 t_list	*convert(int argc, char **argv);
 int		check_dups(t_list *stack, int *argc);
 int		check_nbr(t_list **stack);
-void	print_list(t_list *ls);
 t_list	**get_batches(t_list *stack, int badge_num, int argc);
 long	ft_atol(const char *str);
 void	rm_val(t_list **stack, void	*content);

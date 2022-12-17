@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/12 14:40:37 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:40:15 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,25 @@ static t_list	*min_value(t_list	**stack)
 	return (ft_lstnew(res->content));
 }
 
+static void	*max_val(t_list	**stack)
+{
+	t_list	*res;
+	t_list	*tmp;
+
+	if (!stack || !(*stack))
+		return (NULL);
+	tmp = *stack;
+	res = tmp;
+	while (tmp != NULL)
+	{
+		if ((int)tmp->content > (int)res->content)
+			res = tmp;
+		tmp = tmp->next;
+	}
+	rm_val(stack, res->content);
+	return (res->content);
+}
+
 t_list	**get_batches(t_list *stack, int batch_num, int argc)
 {
 	t_list	**batches;
@@ -53,13 +72,15 @@ t_list	**get_batches(t_list *stack, int batch_num, int argc)
 	while (i < (size_t)(batch_num))
 	{
 		batches[i] = min_value(&cpy);
-		while (j++ < ((argc / batch_num) - 1))
+		while (j++ < (size_t)((argc / batch_num) - 1))
 			ft_lstadd_back(&batches[i], min_value(&cpy));
 		if (i == (size_t)(batch_num - 1))
 			ft_lstlast(batches[i])->next = cpy;
 		j = 0;
 		i++;
 	}
+	while (j++ < 5)
+		rm_val(&batches[i - 1], max_val(&batches[i - 1]));
 	batches[i] = NULL;
 	return (batches);
 }
