@@ -6,12 +6,13 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:02:25 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/17 15:01:55 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:50:23 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//finds the highest value in a stack and returns its position
 static int	find_max(t_list **stack, t_list *batch)
 {
 	int		count;
@@ -40,6 +41,7 @@ static int	find_max(t_list **stack, t_list *batch)
 	return (count);
 }
 
+//finds the highest value in stack b und pushes it to stack a
 void	sort(t_list **a, t_list **b, t_list *batch, int *stats)
 {
 	size_t	i;

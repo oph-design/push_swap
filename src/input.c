@@ -6,12 +6,14 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/19 11:28:30 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:45:00 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//uses ft_split on every content in an array
+//all resulting strings get added to a list
 static void	split_str(char *str, t_list **res)
 {
 	size_t	i;
@@ -26,6 +28,7 @@ static void	split_str(char *str, t_list **res)
 	free(split);
 }
 
+//creates stack a by initializing a list with argv
 t_list	*convert(int argc, char **argv)
 {
 	size_t	i;
@@ -38,6 +41,7 @@ t_list	*convert(int argc, char **argv)
 	return (res);
 }
 
+//checks if the current string is a valid number
 static int	check_digit(char *str)
 {
 	size_t	i;
@@ -57,6 +61,7 @@ static int	check_digit(char *str)
 	return (0);
 }
 
+//frees the list properly after an error
 static void	free_helper(t_list **tmp, t_list **prev, t_list **stack)
 {
 	if (*tmp == *prev)
@@ -65,6 +70,8 @@ static void	free_helper(t_list **tmp, t_list **prev, t_list **stack)
 	(*prev)->next = NULL;
 }
 
+//finds non integer values in a list
+//converts the list contents to integer
 int	check_nbr(t_list **stack)
 {
 	size_t	i;

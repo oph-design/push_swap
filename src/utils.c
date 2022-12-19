@@ -6,12 +6,13 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:24:55 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/19 11:36:54 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:54:22 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//removes a node with the same content as the given one
 void	rm_val(t_list **stack, void	*content)
 {
 	t_list	*tmp;
@@ -40,6 +41,7 @@ void	rm_val(t_list **stack, void	*content)
 	}
 }
 
+//returns a string of digits as a long number
 long	ft_atol(const char *str)
 {
 	int		i;
@@ -69,24 +71,26 @@ long	ft_atol(const char *str)
 	return (f * r);
 }
 
-void	rotate_batch(t_list **stack, int j, int args, char id)
+//rotates a node from the given position to the top
+void	rotate_batch(t_list **stack, int pos, int args, char id)
 {
-	if (j == 1)
+	if (pos == 1)
 	{
 		swap(stack, id);
 		return ;
 	}
-	if (j > (args / 2))
+	if (pos > (args / 2))
 	{
-		j = args - j;
-		while (j--)
+		pos = args - pos;
+		while (pos--)
 			rrotate(stack, id);
 		return ;
 	}
-	while (j--)
+	while (pos--)
 		rotate(stack, id);
 }
 
+//checks a stack for duplicates
 int	check_dups(t_list *stack, int *argc)
 {
 	t_list	*tmp;
@@ -113,6 +117,7 @@ int	check_dups(t_list *stack, int *argc)
 	return (0);
 }
 
+//clears a list completely
 void	lc(t_list **lst)
 {
 	t_list	*tmp;

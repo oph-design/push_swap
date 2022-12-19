@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/19 13:14:47 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:39:44 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 *	[3] = arguments of last batch
 */
 
+//creates batches (chunks) and sorts them in 2 steps
 void	solve(t_list **a, t_list **b, int argc)
 {
 	int				batch_stats[4];

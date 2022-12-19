@@ -6,12 +6,13 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:25:47 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/17 15:06:51 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:54:53 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//checks if a value is part of a batch
 static int	compare(t_list *stack, t_list *batch)
 {
 	if (!stack)
@@ -25,6 +26,7 @@ static int	compare(t_list *stack, t_list *batch)
 	return (0);
 }
 
+//changes the position of the last pushed node
 static void	sort_b(t_list **b)
 {
 	if (!(*b)->next)
@@ -35,27 +37,28 @@ static void	sort_b(t_list **b)
 		swap(b, 'b');
 }
 
+//finds the values of each batch in stack a and pushes them to stack b
 void	presort(t_list **a, t_list **b, t_list *batch, int *stats)
 {
 	size_t		i;
-	int			rotations;
+	int			pos;
 	t_list		*tmp;
 	static int	check = 0;
 
-	rotations = 0;
+	pos = 0;
 	tmp = *a;
 	i = stats[2];
 	if (check == (stats[1] - 1))
 		i = stats[3] - 5;
 	while (i)
 	{
-		while (!compare(tmp, batch) && ++rotations)
+		while (!compare(tmp, batch) && ++pos)
 			tmp = tmp->next;
-		rotate_batch(a, rotations, stats[0], 'a');
+		rotate_batch(a, pos, stats[0], 'a');
 		push(a, b, 'b');
 		sort_b(b);
 		tmp = *a;
-		rotations = 0;
+		pos = 0;
 		stats[0]--;
 		i--;
 	}

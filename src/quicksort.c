@@ -6,12 +6,13 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:07:13 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/19 11:31:31 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:48:43 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//finds the lowest content calue in a list and returns it
 static int	find_min(t_list	**stack)
 {
 	t_list	*res;
@@ -30,6 +31,7 @@ static int	find_min(t_list	**stack)
 	return ((int)res->content);
 }
 
+//sorts a stack of 3 values within 3 operations or less
 static void	sort_thr(t_list	**a, t_list	**b)
 {
 	int	min;
@@ -52,6 +54,7 @@ static void	sort_thr(t_list	**a, t_list	**b)
 		rotate(a, 'a');
 }
 
+//sorts a stack of 5 values within 12 operations or less
 int	quicksort(t_list **a, t_list **b, int argc)
 {
 	int	min;
@@ -77,6 +80,7 @@ int	quicksort(t_list **a, t_list **b, int argc)
 	return (0);
 }
 
+//checks if a given stack is already in the right order
 int	check_for_order(t_list *stack, int argc)
 {
 	int		count;

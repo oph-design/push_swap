@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/19 11:33:30 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:42:05 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	*useless(void *v)
 	return (r);
 }
 
+//finds lowest current value in a list and returns a new node with its value
 static t_list	*min_val(t_list	**stack)
 {
 	t_list	*res;
@@ -39,6 +40,7 @@ static t_list	*min_val(t_list	**stack)
 	return (ft_lstnew(res->content));
 }
 
+//finds highest current value in a list and returns its content
 static void	*max_val(t_list	**stack)
 {
 	t_list	*res;
@@ -58,6 +60,8 @@ static void	*max_val(t_list	**stack)
 	return (res->content);
 }
 
+//returns array with lists (one list for each batch)
+//lists are sorted from smallest value to highest
 t_list	**get_batches(t_list *stack, int batch_num, int argc)
 {
 	t_list	**batches;
