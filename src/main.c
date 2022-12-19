@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/19 11:31:41 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 11:50:15 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,4 @@ int	nain(int argc, char *argv[])
 		return (quicksort(&a, &b, argc), lc(&a), 0);
 	solve(&a, &b, argc);
 	return (lc(&a), 0);
-}
-
-int main(int argc, char *argv[])
-{
-	nain(argc, argv);
-	system("leaks push_swap");
-	return (0);
 }
