@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:24:55 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/17 15:07:34 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 11:31:56 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ long	ft_atol(const char *str)
 	r = 0;
 	if (str[i] == 0)
 		return (0);
+	if (ft_strlen > 10)
+		return (30000000000);
 	while ((str[i] >= 8 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -85,22 +87,42 @@ void	rotate_batch(t_list **stack, int j, int args, char id)
 		rotate(stack, id);
 }
 
-int	check_for_order(t_list *stack, int argc)
+int	check_dups(t_list *stack, int *argc)
 {
-	int		count;
+	t_list	*tmp;
+	int		val;
+	int		comp;
+
+	tmp = NULL;
+	val = 0;
+	comp = 0;
+	while (stack != NULL)
+	{
+		tmp = stack->next;
+		val = (int)stack->content;
+		while (tmp != NULL)
+		{
+			comp = (int)(tmp->content);
+			if (val == comp)
+				return (1);
+			tmp = tmp->next;
+		}
+		(*argc)++;
+		stack = stack->next;
+	}
+	return (0);
+}
+
+void	lc(t_list **lst)
+{
 	t_list	*tmp;
 
-	tmp = stack;
-	stack = stack->next;
-	count = 1;
-	while (stack != NULL
-		&& (int)stack->content > (int)tmp->content)
+	if (!lst || !*lst)
+		return ;
+	while (*lst)
 	{
-		tmp = stack;
-		stack = stack->next;
-		count++;
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
 	}
-	if (count == argc)
-		return (1);
-	return (0);
 }

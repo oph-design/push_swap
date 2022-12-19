@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:40:46 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/17 15:04:36 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 11:28:30 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,53 +57,38 @@ static int	check_digit(char *str)
 	return (0);
 }
 
+static void	free_helper(t_list **tmp, t_list **prev, t_list **stack)
+{
+	if (*tmp == *prev)
+		*stack = NULL;
+	ft_lstclear(tmp, free);
+	(*prev)->next = NULL;
+}
+
 int	check_nbr(t_list **stack)
 {
 	size_t	i;
 	char	*str;
 	long	val;
 	t_list	*tmp;
+	t_list	*prev;
 
 	tmp = (*stack);
+	prev = tmp;
 	i = 0;
 	while (tmp != NULL)
 	{
 		str = (char *)(tmp->content);
 		if (check_digit(str))
-			return (1);
+			return (free_helper(&tmp, &prev, stack), 1);
 		val = ft_atol(str);
 		if (val < INT_MIN || val > INT_MAX)
-			return (1);
+			return (free_helper(&tmp, &prev, stack), 1);
 		tmp->content = (void *)val;
+		prev = tmp;
 		tmp = tmp->next;
 		free(str);
 		i = 0;
-	}
-	return (0);
-}
-
-int	check_dups(t_list *stack, int *argc)
-{
-	t_list	*tmp;
-	int		val;
-	int		comp;
-
-	tmp = NULL;
-	val = 0;
-	comp = 0;
-	while (stack != NULL)
-	{
-		tmp = stack->next;
-		val = (int)stack->content;
-		while (tmp != NULL)
-		{
-			comp = (int)(tmp->content);
-			if (val == comp)
-				return (1);
-			tmp = tmp->next;
-		}
-		(*argc)++;
-		stack = stack->next;
 	}
 	return (0);
 }

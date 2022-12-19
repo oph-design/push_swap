@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:07:13 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/17 13:42:01 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 11:31:31 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,25 @@ int	quicksort(t_list **a, t_list **b, int argc)
 	sort_thr(a, b);
 	push(b, a, 'a');
 	push(b, a, 'a');
+	return (0);
+}
+
+int	check_for_order(t_list *stack, int argc)
+{
+	int		count;
+	t_list	*tmp;
+
+	tmp = stack;
+	stack = stack->next;
+	count = 1;
+	while (stack != NULL
+		&& (int)stack->content > (int)tmp->content)
+	{
+		tmp = stack;
+		stack = stack->next;
+		count++;
+	}
+	if (count == argc)
+		return (1);
 	return (0);
 }

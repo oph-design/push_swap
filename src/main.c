@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/17 16:06:06 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 11:31:41 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	solve(t_list **a, t_list **b, int argc)
 	free(batches);
 }
 
-int	main(int argc, char *argv[])
+int	nain(int argc, char *argv[])
 {
 	t_list	*a;
 	t_list	*b;
@@ -54,15 +54,20 @@ int	main(int argc, char *argv[])
 	a = convert(argc, argv);
 	argc = 0;
 	if (check_nbr(&a))
-		return (ft_putendl_fd("Error", 2), 1);
+		return (lc(&a), ft_putendl_fd("Error", 2), 1);
 	if (check_dups(a, &argc))
-		return (ft_putendl_fd("Error", 2), 1);
+		return (lc(&a), ft_putendl_fd("Error", 2), 1);
 	if (argc == 1 || check_for_order(a, argc))
-		return (0);
+		return (lc(&a), 0);
 	if (argc < 6)
-		return (quicksort(&a, &b, argc), 0);
+		return (quicksort(&a, &b, argc), lc(&a), 0);
 	solve(&a, &b, argc);
-	return (0);
+	return (lc(&a), 0);
 }
 
-// system("leaks push_swap");
+int main(int argc, char *argv[])
+{
+	nain(argc, argv);
+	system("leaks push_swap");
+	return (0);
+}
