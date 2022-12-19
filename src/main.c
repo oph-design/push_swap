@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 09:17:26 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/19 11:50:15 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:14:47 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	solve(t_list **a, t_list **b, int argc)
 	free(batches);
 }
 
-int	nain(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_list	*a;
 	t_list	*b;
