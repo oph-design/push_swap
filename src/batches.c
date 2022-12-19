@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:02:53 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/17 15:40:15 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 11:33:30 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	*useless(void *v)
 	return (r);
 }
 
-static t_list	*min_value(t_list	**stack)
+static t_list	*min_val(t_list	**stack)
 {
 	t_list	*res;
 	t_list	*tmp;
@@ -71,9 +71,9 @@ t_list	**get_batches(t_list *stack, int batch_num, int argc)
 	batches = malloc((batch_num + 1) * sizeof(t_list));
 	while (i < (size_t)(batch_num))
 	{
-		batches[i] = min_value(&cpy);
+		batches[i] = min_val(&cpy);
 		while (j++ < (size_t)((argc / batch_num) - 1))
-			ft_lstadd_back(&batches[i], min_value(&cpy));
+			ft_lstadd_back(&batches[i], min_val(&cpy));
 		if (i == (size_t)(batch_num - 1))
 			ft_lstlast(batches[i])->next = cpy;
 		j = 0;

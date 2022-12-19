@@ -6,7 +6,7 @@
 /*   By: oheinzel <oheinzel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:24:55 by oheinzel          #+#    #+#             */
-/*   Updated: 2022/12/19 11:31:56 by oheinzel         ###   ########.fr       */
+/*   Updated: 2022/12/19 11:34:02 by oheinzel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ long	ft_atol(const char *str)
 	r = 0;
 	if (str[i] == 0)
 		return (0);
-	if (ft_strlen > 10)
+	if (ft_strlen(str) > 10)
 		return (30000000000);
 	while ((str[i] >= 8 && str[i] <= 13) || str[i] == 32)
 		i++;
